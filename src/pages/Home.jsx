@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import tmdb from "../services/tmdb";
 import MovieCard from "../components/MovieCard";
 
+import "./MoviesGrid.css";
+
 const moviesURL = import.meta.env.VITE_API;
 const key = import.meta.env.VITE_API_KEY;
 
@@ -30,7 +32,8 @@ const Home = () => {
       <div className="movies-container">
         {/* cache */}
         {topMovies.length === 0 && <p>Carregando...</p>}
-        {topMovies && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)}
+        {topMovies &&
+          topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </div>
   );
