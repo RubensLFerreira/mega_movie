@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import tmdb from "../services/tmdb";
-import MovieCard from "../components/MovieCard";
+import tmdb from "../../services/tmdb";
+import MovieCard from "../../components/MovieCard";
 
 const searchURL = import.meta.env.VITE_SEARCH;
 const key = import.meta.env.VITE_API_KEY;
 
-import "./MoviesGrid.css";
+import "./style.css";
 
 const Search = () => {
   const [searchParams] = useSearchParams();

@@ -7,13 +7,13 @@ import {
   BsFillFileEarmarkTextFill,
 } from "react-icons/bs";
 
-import tmdb from "../services/tmdb";
-import MovieCard from "../components/MovieCard";
+import tmdb from "../../services/tmdb";
+import MovieCard from "../../components/MovieCard";
 
 const moviesURL = import.meta.env.VITE_API;
 const key = import.meta.env.VITE_API_KEY;
 
-import "./Movie.css";
+import "./style.css";
 
 const Movie = () => {
   const { id } = useParams();

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
-import tmdb from "../services/tmdb";
-import MovieCard from "../components/MovieCard";
+import tmdb from "../../services/tmdb";
+import MovieCard from "../../components/MovieCard";
+
+import './style.css';
 
 const moviesURL = import.meta.env.VITE_API;
 const key = import.meta.env.VITE_API_KEY;
