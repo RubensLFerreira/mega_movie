@@ -6,9 +6,13 @@
   margin: 2rem auto;
 }
 
+.movie-page img {
+  width: 50%;
+}
+
 .movie-page svg {
   font-size: 1.5rem;
-  color: #f7d354;
+  color: #209cee;
 }
 
 .movie-page .movie-card {
