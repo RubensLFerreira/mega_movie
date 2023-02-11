@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiCameraMovie, BiSearchAlt2 } from "react-icons/bi";
 
-import './style.css';
+import logo from "/favicon/favicon-32x32.png";
+
+import "./style.css";
 
 function Navbar() {
   const [search, setSearch] = useState("");
@@ -26,10 +28,15 @@ function Navbar() {
     <nav className="navbar">
       <h2>
         <Link to="/">
-          <BiCameraMovie />
-          Mega Movie
+          <img src={logo} alt="logo" />
         </Link>
       </h2>
+      <h3>
+        <Link to="/">Início</Link>
+        <Link to="/topmovies">Filmes</Link>
+        <Link to="/topseries">Séries</Link>
+        <Link to="/toppeople">Pessoas</Link>
+      </h3>
       {/* <Link to="/movie/1">Movie</Link> <br />
       <Link to="/search">Search</Link> */}
       <form onSubmit={handleSubmit}>
