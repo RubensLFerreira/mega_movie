@@ -35,7 +35,7 @@
   background-color: #209cee;
   padding: .5rem 1rem;
   border-radius: 5px;
-  box-shadow: 4px 7px 15px -3px rgba(0,0,0,0.75);
+  box-shadow: 4px 7px 15px -3px rgba(0, 0, 0, 0.75);
 }
 
 .lancamentos {
@@ -49,14 +49,14 @@
 }
 
 .movies-container div {
-  width: 20%;
+  /* width: 20%; */
   color: #fff;
   margin-bottom: 2.5rem;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   justify-content: space-between;
   background-color: #111;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin: .5rem;
   border-radius: 5px;
 }

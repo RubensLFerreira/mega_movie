@@ -23,7 +23,7 @@ const People = () => {
 
   return (
     <div className="container">
-      <h2 className="title">Pessoas populares</h2>
+      <h2 className="title">Famosos</h2>
       <div className="movies-container">
         {topPeople.length === 0 && <p>Carregando...</p>}
         {topPeople &&

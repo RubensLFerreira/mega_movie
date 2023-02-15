@@ -8,7 +8,8 @@ import {
 } from "react-icons/bs";
 
 import tmdb from "../../services/tmdb";
-import MovieCard from "../../components/MovieCard";
+// import MovieCard from "../../components/MovieCard";
+const imageUrl = import.meta.env.VITE_IMG;
 
 const moviesURL = import.meta.env.VITE_API;
 const key = import.meta.env.VITE_API_KEY;
@@ -35,42 +36,49 @@ const Movie = () => {
     const movieURL = `${moviesURL}${id}?${key}&language=pt-BR`;
     getMovie(movieURL);
   }, []);
-
   return (
     <div className="movie-page">
-      {movie && (
-        <>
-          <MovieCard movie={movie} showLink={false} />
-          <p className="tagline">{movie.tagline}</p>
-          <div className="info">
-            <h3>
-              <BsWallet2 /> Orçamento:
-            </h3>
-            <p>{formatCurrency(movie.budget)}</p>
-          </div>
-
-          <div className="info">
-            <h3>
-              <BsGraphUp /> Receita:
-            </h3>
-            <p>{formatCurrency(movie.revenue)}</p>
-          </div>
-
-          <div className="info">
-            <h3>
-              <BsHourglassSplit /> Duração:
-            </h3>
-            <p>{movie.runtime} minutos</p>
-          </div>
-
-          <div className="info description">
-            <h3>
-              <BsFillFileEarmarkTextFill /> Descrição:
-            </h3>
-            <p>{movie.overview}</p>
-          </div>
-        </>
-      )}
+      <div className="card" style={{ width: "25rem", color: "black" }}>
+        {movie && (
+          <>
+            <img
+              className="card-img-top"
+              src={imageUrl + movie.poster_path}
+              alt={movie.title}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{movie.title}</h5>
+              <p className="card-text">{movie.tagline}</p>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <h4>
+                  <BsWallet2 /> Orçamento:
+                </h4>
+                <p>{formatCurrency(movie.budget)}</p>
+              </li>
+              <li className="list-group-item">
+                <h4>
+                  <BsGraphUp /> Receita:
+                </h4>
+                <p>{formatCurrency(movie.revenue)}</p>
+              </li>
+              <li className="list-group-item">
+                <h4>
+                  <BsHourglassSplit /> Duração:
+                </h4>
+                <p>{movie.runtime} minutos</p>
+              </li>
+              <li className="list-group-item">
+                <h4>
+                  <BsFillFileEarmarkTextFill /> Descrição:
+                </h4>
+                <p>{movie.overview}</p>
+              </li>
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 };

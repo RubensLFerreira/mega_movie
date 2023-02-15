@@ -2,14 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import tmdb from "../../services/tmdb";
-import SerieCard from "../../components/SerieCard";
-
-import {
-  BsGraphUp,
-  BsWallet2,
-  BsHourglassSplit,
-  BsFillFileEarmarkTextFill,
-} from "react-icons/bs";
+const imageUrl = import.meta.env.VITE_IMG;
+import { BsHourglassSplit, BsFillFileEarmarkTextFill } from "react-icons/bs";
 
 const seriesURL = import.meta.env.VITE_API_SERIE;
 const key = import.meta.env.VITE_API_KEY;
@@ -30,27 +24,41 @@ const Serie = () => {
     getSerie(serieURL);
   }, []);
 
+  useEffect(() => {
+    const serieURL = `${seriesURL}${id}?${key}&language=pt-BR`;
+    getSerie(serieURL);
+  }, []);
   return (
     <div className="movie-page">
-      {serie && (
-        <>
-          <SerieCard serie={serie} showLink={false} />
-          <p className="tagline">{serie.name}</p>
-          <div className="info">
-            <h3>
-              <BsWallet2 /> Frase:
-            </h3>
-            <p>{serie.tagline}</p>
-          </div>
-
-          <div className="info description">
-            <h3>
-              <BsFillFileEarmarkTextFill /> Descrição:
-            </h3>
-            <p>{serie.overview}</p>
-          </div>
-        </>
-      )}
+      <div className="card" style={{ width: "25rem", color: "black" }}>
+        {serie && (
+          <>
+            <img
+              className="card-img-top"
+              src={imageUrl + serie.poster_path}
+              alt={serie.name}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{serie.name}</h5>
+              <p className="card-text">{serie.tagline}</p>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <h4>
+                  <BsHourglassSplit /> Duração:
+                </h4>
+                <p>{serie.runtime} minutos</p>
+              </li>
+              <li className="list-group-item">
+                <h4>
+                  <BsFillFileEarmarkTextFill /> Descrição:
+                </h4>
+                <p>{serie.overview}</p>
+              </li>
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 };

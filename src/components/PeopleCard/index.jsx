@@ -6,12 +6,14 @@ const imageUrl = import.meta.env.VITE_IMG;
 
 function PeopleCard({ person, showLink = true }) {
   return (
-    <div className="movie-card">
+    <div className="card" style={{ width: "18rem" }}>
       <img src={imageUrl + person.profile_path} alt={person.name} />
-      <h2>{person.name}</h2>
-      <p>
-        <FaStar /> {person.known_for_department}
-      </p>
+      <div className="card-body">
+        <h5 className="card-title">{person.name}</h5>
+        <p className="card-text">
+          <FaStar /> {person.known_for_department}
+        </p>
+      </div>
     </div>
   );
 }
