@@ -1,38 +1,34 @@
 import { useState } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
+
+// import logo from "/favicon/favicon-32x32.png";
 import { BiSearchAlt2 } from "react-icons/bi";
 
-import logo from "/favicon/favicon-32x32.png";
+import "./NavbarStyle.css";
 
-import "./style.css";
-
-function Navbar() {
+const Navbar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Verificando se a busca nn extá vázia
+    console.log(search);
     if (!search) return;
-
-    // passando a pesquisa para search
     navigate(`/search?q=${search}`);
-
-    // limpando input de pesquisa
     setSearch("");
   };
 
   return (
     <nav
-      className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+      className="navbar navbar-expand-lg bg-body-tertiary"
       data-bs-theme="dark"
     >
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
-          <img src={logo} alt="logo" />
+          {/* <img src={logo} alt="logo" /> */}
+          Mega Movie
         </Link>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -40,7 +36,6 @@ function Navbar() {
                 Início
               </Link>
             </li>
-
             <li className="nav-item dropdown">
               <Link
                 to="/topmovies"
@@ -54,26 +49,23 @@ function Navbar() {
               </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/topmovies" className="dropdown-item">
-                    Top filmes
+                  <Link to="/movies/popular" className="dropdown-item">
+                    Populares
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Lançamentos
+                  <Link to="/movies/now_playing" className="dropdown-item">
+                    Em cartaz
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Melhores filmes
+                  <Link to="/movies/upcoming" className="dropdown-item">
+                    Próximas estreias
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link to="/" className="dropdown-item">
-                    Outros
+                  <Link to="/movies/top_rated" className="dropdown-item">
+                    Mais bem avaliados
                   </Link>
                 </li>
               </ul>
@@ -81,7 +73,7 @@ function Navbar() {
 
             <li className="nav-item dropdown">
               <Link
-                to="/topseries"
+                to="/topmovies"
                 className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
@@ -92,47 +84,44 @@ function Navbar() {
               </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/topseries" className="dropdown-item">
-                    Top séries
+                  <Link to="/tv/popular" className="dropdown-item">
+                    Populares
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Lançamentos
+                  <Link to="/tv/airing_today" className="dropdown-item">
+                    Em exibição hoje
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Melhores series
+                  <Link to="/tv/on_the_air" className="dropdown-item">
+                    Na TV
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link to="/" className="dropdown-item">
-                    Outros
+                  <Link to="/tv/top_rated" className="dropdown-item">
+                    Mais bem avaliados
                   </Link>
                 </li>
               </ul>
             </li>
 
             <li className="nav-item">
-              <Link to="/toppeople" className="nav-link">
+              <Link to="/people" className="nav-link">
                 Famosos
               </Link>
             </li>
           </ul>
-          <form onSubmit={handleSubmit} className="d-flex" role="search">
+          <form className="d-flex" onSubmit={handleSubmit} role="search">
             <input
-              type="text"
-              name="pesquisar"
-              id="pesquisar"
+              className="form-control me-2"
+              type="search"
               placeholder="Pesquisar"
+              aria-label="Search"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
             />
-            <button type="submit">
+            <button className="btn btn-outline-success" type="submit">
               <BiSearchAlt2 />
             </button>
           </form>
@@ -140,6 +129,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
