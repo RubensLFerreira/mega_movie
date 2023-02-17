@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import tmdb from "../../services/tmdb";
-import MovieCard from "../../components/MovieCard";
+import MovieCard from "../../components/AllMovieCards/MovieCard";
 
 const searchURL = import.meta.env.VITE_SEARCH;
 const key = import.meta.env.VITE_API_KEY;
 
-import "./style.css";
+import "./SearchStyle.css";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -27,11 +27,12 @@ const Search = () => {
 
   return (
     <div className="container">
-      <h2 className="title">
-        Resultados para: <span className="query-text">{query}</span>
-      </h2>
+      <h4>
+        Resultados para: <span>{query}</span>
+      </h4>
       <div className="movies-container">
-        {movies.length > 0 &&
+        {movies.length === 0 && <p>Carregando...</p>}
+        {movies &&
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </div>
