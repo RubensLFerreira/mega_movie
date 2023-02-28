@@ -18,3 +18,12 @@
   width: 15rem;
 }
 
+.title-search {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 20pt;
+}
+
+.title-search span {
+  color: yellow;
+}
